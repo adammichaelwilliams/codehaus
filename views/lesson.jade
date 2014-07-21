@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    h1 Lesson #{lesson.title}
+    h2 By: #{lesson.author}
+    h3 Number of steps: #{lesson.stepCount}
+    #lesson
+
+        form(action='/lessons/#{lessonUrlTitle}/step', method='POST')
+            p Create a new step:
+            input(type='text', name='title', placeholder="What's the lesson called?", required)
+            input(type='textarea', name='body', placeholder='Lesson prompt?', required)
+            input(type='textarea', name='code', placeholder='Initial code here', required)
+            input(type='text', name='answer', placeholder="What's the expected output?", required)
+            input(type='text', name='hint', placeholder='Have a hint?', required)
+            input(type='submit', value='Create')
+
+    #steps 
+        for step in steps
+            p Step #{step.number+1}: #{step.title}
+            p Prompt:
+                p #{step.body}
+            p Code:
+                p #{step.code}
+            p Answer?
+                p #{step.answer}
+            p Hint?
+                p #{step.hint}
+
+
+

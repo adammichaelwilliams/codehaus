@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 Lessons
+    #lessons
+
+    form(action='/lessons', method='POST')
+        p Create a new lesson:
+        input(type='text', name='title', placeholder="What's the lesson called?", required)
+        input(type='text', name='author', placeholder='Who are you?', required)
+        input(type='submit', value='Create')
